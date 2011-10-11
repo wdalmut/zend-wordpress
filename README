@@ -18,26 +18,26 @@ This library allows you to connect and perform operations on remote Wordpress in
 Features
 --------
 
-Connect to multiple Wordpress blogs with one connection
-Get user list and user information from remote blogs
-Create, Retrive, Update and Delete pages (Pages CRUD)
-Create, Retrive, Update and Delete posts (Posts CRUD)
-Change page status, draft, publish and so on.
-Change posts status, draft, publish and so on.
-Get tags form your blog instance
-Get categories from your blog instance
-Get comments from articles
-Create, edit and moderate comments for articles (Comments CRUD)
-Get users of all your blogs or any specific blog
-PHPUnit tested - more than 70% of the code under test
-PEAR Packages available see appropriate section.
+ * Connect to multiple Wordpress blogs with one connection
+ * Get user list and user information from remote blogs
+ * Create, Retrive, Update and Delete pages (Pages CRUD)
+ * Create, Retrive, Update and Delete posts (Posts CRUD)
+ * Change page status, draft, publish and so on.
+ * Change posts status, draft, publish and so on.
+ * Get tags form your blog instance
+ * Get categories from your blog instance
+ * Get comments from articles
+ * Create, edit and moderate comments for articles (Comments CRUD)
+ * Get users of all your blogs or any specific blog
+ * PHPUnit tested - more than 70% of the code under test
+ * PEAR Packages available http://pear.walterdalmut.com
 
 This library use the ZF1 autoloader, and it is written for working on PHP 5.x or later.
 
 Base Wordpress connection
 -------------------------
 
-$wp = new Wally_Wordpress("http://www.your-site-name.com", "username", "password");
+$wp = new Wally_Wordpress("your-site-name.com", "username", "password");
 
 Retrive page list and use magic finder methods for get a single page.
 
