@@ -28,7 +28,7 @@ abstract class Abstract
 	{
 		if (!array_key_exists($key, $this->_data)) {
 			require_once 'Zend/Exception.php';
-			throw new Wally\Wordpress\Exception\RuntimeException("Specified field \"$key\" is not in the message");
+			throw new Zend_Exception("Specified field \"$key\" is not in the message");
 		}
 		return $this->_data[$key];
 	}
@@ -39,7 +39,7 @@ abstract class Abstract
 	 * @param  string $key   The message key.
 	 * @param  mixed  $value The value for the property.
 	 * @return void
-	 * @throws Wally\Wordpress\Exception\RuntimeException
+	 * @throws Zend_Exception
 	 */
 	public function __set($key, $value)
 	{

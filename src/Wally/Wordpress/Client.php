@@ -1,4 +1,7 @@
 <?php 
+
+namespace Wally\Wordpress;
+
 /**
  * 
  * The base XML-RPC Client
@@ -6,8 +9,8 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Client
-	extends Zend_XmlRpc_Client
+class Client
+	extends Zend\XmlRpc\Client
 {
     /**
      * @var string The blog username
@@ -25,7 +28,7 @@ class Wally_Wordpress_Client
     /**
      * Get blog list for the access key used
      *
-     * @return Wally_Wordpress_Model_Authors
+     * @return Wally\Wordpress\Model\Authors
      */
 	public function getUsersBlogs()
 	{
@@ -42,7 +45,7 @@ class Wally_Wordpress_Client
      *
      * @param $blogId The blog id
      *
-     * @return Wally_Wordpress_Model_Authors
+     * @return Wally\Wordpress\Model\Authors
      */
 	public function getAuthors($blogId = false)
 	{
@@ -69,7 +72,7 @@ class Wally_Wordpress_Client
      * Get categories of a blog
      *
      * @param int The blog id
-     * @return Wally_Wordpress_Model_Categories
+     * @return Wally\Wordpress\Model\Categories
      */
 	public function getCategories($blogId = 1)
 	{
@@ -82,7 +85,7 @@ class Wally_Wordpress_Client
      *
      * @param int The blog id
      *
-     * @return Wally_Wordpress_Model_Tags
+     * @return Wally\Wordpress\Model\Tags
      */
 	public function getTags($blogId = 1)
 	{
@@ -94,21 +97,21 @@ class Wally_Wordpress_Client
 	 * 
 	 * Get comments of a given post
 	 * 
-	 * @param mixed|Zend_Wordpress_Model_Post $post The post that you want comments use the 
-	 * 	Wally_Wordpress_Model_Post or Wally_Wordpress_Model_Page
+	 * @param mixed|Wally_Wordpress_Model_Post $post The post that you want comments use the 
+	 * 	Wally\Wordpress\Model\Post or Wally\Wordpress\Model\Page
 	 * @param int $blogId The blog identification number
 	 * 
-	 * @throws Zend_Exception in case of errors
+	 * @throws Wally\Wordpress\Exception\RuntimeException in case of errors
 	 * 
-	 * @return Wally_Wordpress_Model_Comments The comments structure
+	 * @return Wally\Wordpress\Model\Comments The comments structure
 	 */
 	public function getComments($post, $blogId = 1)
 	{
 	    if (is_array($post)) {
 	        $post = $post[0];
 	        
-	        if (!($post instanceof Wally_Wordpress_Model_Page)) {
-	            throw new Zend_Exception("Only models of post and page are valid. Use the right models.");
+	        if (!($post instanceof Wally\Wordpress\Model\Page)) {
+	            throw new Wally\Wordpress\Exception\RuntimeException("Only models of post and page are valid. Use the right models.");
 	        }
 	    }
 	    
@@ -156,7 +159,7 @@ class Wally_Wordpress_Client
 	 * 
 	 * @param int $blogId
 	 * 
-	 * @return Wally_Wordpress_Model_Pages Your pages
+	 * @return Wally\Wordpress\Model\Pages Your pages
 	 */
 	public function getPages($blogId = false)
 	{
@@ -216,9 +219,9 @@ class Wally_Wordpress_Client
 	        $model = $model[0];
 	    }
 	    
-	    if ($model instanceof Wally_Wordpress_Model_Post) {
+	    if ($model instanceof Wally\Wordpress\Model\Post) {
 	        $ret = $this->_wpMethod("deletePost", array('blog_id' => $blogId, "postid" => $model->postid), array(), "blogger");
-	    } else if ($model instanceof Wally_Wordpress_Model_Page) {
+	    } else if ($model instanceof Wally\Wordpress\Model\Page) {
             $ret = $this->_wpMethod("deletePage", array("blog_id" => $blogId), array("page_id" => $model->pageId));
 	    }
 	    
@@ -242,7 +245,7 @@ class Wally_Wordpress_Client
 			$model = $model[0];
 		}
 		
-		if ($model instanceof Wally_Wordpress_Model_Post) {
+		if ($model instanceof Wally\Wordpress\Model\Post) {
 		    $content = $model->toArray();
 		    $content = $content["content"];
 		    
@@ -251,10 +254,10 @@ class Wally_Wordpress_Client
 		    } else {
                 $this->_wpMethod("newPost", array('appkey' => '', 'blog_id' => $blogId), array('content' => $content, 'publish' => true), "blogger");
 		    }
-		} else if($model instanceof Wally_Wordpress_Model_Comment) {
+		} else if($model instanceof Wally\Wordpress\Model\Comment) {
             if (isset($model->commentId)) {
                 
-                $newModel = new Wally_Wordpress_Model_Comment();
+                $newModel = new Wally\Wordpress\Model\Comment();
                 $newModel->status = $model->status;
                 $newModel->content = $model->content;
                 $newModel->author = $model->author;
@@ -265,13 +268,13 @@ class Wally_Wordpress_Client
             } else {
                 //TODO: check page or post?
                 if (!$model->getPost() || !$model->getPost()->postid) {
-                    throw new Zend_Exception("You must set the post for create a new comment.");
+                    throw new Wally\Wordpress\Exception\RuntimeException("You must set the post for create a new comment.");
                 }
                 
                 $postId = $model->getPost()->postid;
                 $this->_wpMethod('newComment', array('blog_id' => $blogId), array('post_id' => $postId, 'comment' => $model->toArray()));
             }
-		} else if ($model instanceof Wally_Wordpress_Model_Page) {
+		} else if ($model instanceof Wally\Wordpress\Model\Page) {
 		    if (isset($model->pageId)) {
 		        
 		        if (isset($model->dateCreated)) {
@@ -287,7 +290,7 @@ class Wally_Wordpress_Client
 			    $result = $this->_wpMethod("newPage", array("blog_id" => $blogId), array("content" => $model->toArray()));
 		    }
 		} else {
-			throw new Zend_Exception("Unknow model");
+			throw new Wally\Wordpress\Exception\RuntimeException("Unknow model");
 		}
 		
 		return $result;
@@ -355,17 +358,17 @@ class Wally_Wordpress_Client
 	
 	private function _toPages($list, $class = "Page", $parentClass = "Pages")
 	{
-	    $classname = "Wally_Wordpress_Model_{$class}";
-	    $parentClassname = "Wally_Wordpress_Model_{$parentClass}";
+	    $classname = "Wally\Wordpress\Model\{$class}";
+	    $parentClassname = "Wally\Wordpress\Model\{$parentClass}";
 	    
 		$default = new $parentClassname();
 		foreach ($list as $a => $b) {
 			$s = new $classname();
 			foreach ($b as $k => $w) {
-				$t = new Zend_Filter();
-				$t->addFilter(new Zend_Filter_Word_SeparatorToCamelCase("_"));
+				$t = new Zend\Filter();
+				$t->addFilter(new Zend\Filter\Word\SeparatorToCamelCase("_"));
 		
-				$r = Wally_Wordpress_Tool::lcfirst($t->filter($k));
+				$r = lcfirst($t->filter($k));
 				$s->$r = $w;
 			}
 		
