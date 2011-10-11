@@ -9,11 +9,24 @@
 class Wally_Wordpress_Client
 	extends Zend_XmlRpc_Client
 {
+    /**
+     * @var string The blog username
+     */
 	private $_username;
+    /**
+     * @var string THe blog password
+     */
 	private $_password;
-	
+    /**
+     * The blog id
+     */	
 	private $_blogId = 1;
 	
+    /**
+     * Get blog list for the access key used
+     *
+     * @return Wally_Wordpress_Model_Authors
+     */
 	public function getUsersBlogs()
 	{
 		$list = $this->_wpMethod("getUsersBlogs");
@@ -21,6 +34,16 @@ class Wally_Wordpress_Client
 		return $this->_toPages($list, "Author", "Authors");
 	}
 	
+    /**
+     * Get authors of a given blog
+     *
+     * If no one blog id is passed the default or
+     * previously setted is used.
+     *
+     * @param $blogId The blog id
+     *
+     * @return Wally_Wordpress_Model_Authors
+     */
 	public function getAuthors($blogId = false)
 	{
 		return $this->_getAuthorsOfBlog($blogId);
@@ -42,12 +65,25 @@ class Wally_Wordpress_Client
 		return $default;
 	}
 	
+    /**
+     * Get categories of a blog
+     *
+     * @param int The blog id
+     * @return Wally_Wordpress_Model_Categories
+     */
 	public function getCategories($blogId = 1)
 	{
 	    $list = $this->_wpMethod("getCategories", array("blog_id" => $blogId));
 	    return $this->_toPages($list, "Category", "Categories");
 	}
 	
+    /**
+     * Get tags of a blog
+     *
+     * @param int The blog id
+     *
+     * @return Wally_Wordpress_Model_Tags
+     */
 	public function getTags($blogId = 1)
 	{
 	    $list = $this->_wpMethod("getTags", array("blog_id" => $blogId));
@@ -91,6 +127,12 @@ class Wally_Wordpress_Client
 	    return $this->_toPages($list, "Comment", "Comments");
 	}
 	
+    /**
+     * Get posts of a blog
+     *
+     * @param int $numberOfPosts Number of posts to give
+     * @param int $blogId The blog id
+     */
 	public function getPosts($numberOfPosts = 5, $blogId = false) 
 	{
 		if (is_array($numberOfPosts) && count($numberOfPosts)) {
@@ -156,6 +198,16 @@ class Wally_Wordpress_Client
 		);
 	}
 	
+
+    /**
+     * Remove an entity from a blog
+     *
+     * The system use the reflection for get
+     * the content type
+     *
+     * @param mixed $model The model to remove
+     * @param int $blogId The blog id
+     */
 	public function delete($model, $blogId = 1) 
 	{
 	    $ret = false;
@@ -173,6 +225,15 @@ class Wally_Wordpress_Client
 	    return $ret;
 	}
 	
+    /**
+     * Store an entity to a blog
+     *
+     * The system use the reflection for store
+     * an entity to a blog
+     *
+     * @param mixed $model The entity to store
+     * @param int $blogId The blog id
+     */
 	public function save($model, $blogId = 1)
 	{
 	    $result = false;
@@ -232,31 +293,61 @@ class Wally_Wordpress_Client
 		return $result;
 	}
 	
+    /**
+     * Set the username for blog login
+     *
+     * @param string $username The username
+     */
 	public function setUsername($username)
 	{
 		$this->_username = $username;
 	}
 	
+    /**
+     * Retrive the current username
+     *
+     * @return string The username
+     */
 	public function getUsername()
 	{
 	    return $this->_username;
 	}
 	
+    /**
+     * The password for blog login
+     *
+     * @param string $password
+     */
 	public function setPassword($password)
 	{
 		$this->_password = $password;
 	}
 	
+    /**
+     * Retrive the password
+     *
+     * @return string The password
+     */
 	public function getPassword()
 	{
 	    return $this->_password;
 	}
 	
+    /**
+     * Set the blog id
+     *
+     * @param int The blog id
+     */
 	public function setBlogId($id)
 	{
 		$this->_blogId = $id[0];
 	}
 	
+    /**
+     * Retrive the blog id
+     *
+     * @return int The blog id
+     */
 	public function getBlogId()
 	{
 	    return $this->_blogId;
