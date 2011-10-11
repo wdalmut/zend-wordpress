@@ -1,11 +1,14 @@
 <?php 
+
+namespace Wally;
+
 /**
  * 
  * The Main Access Point of Wordpress Library
  *
  * @author Walter Dal Mut
  */
-class Wally_Wordpress
+class Wordpress
 {
 	/**
 	 * Page publish status const
