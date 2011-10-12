@@ -89,14 +89,20 @@ class Wally_Wordpress
 		$this->_username = $username;
 		$this->_password = $password;
 		
-		$this->_client = new Wally_Wordpress_Client($this->_host);
-		$this->_client->setUsername($this->_username);
-		$this->_client->setPassword($this->_password);
-		
-		$this->_client->setHttpClient(new Zend_Http_Client($this->_host));
-		
 		$this->_init();
 	}
+
+    /**
+     * Dependency injection
+     * 
+     * Useful method for testing
+     *
+     * @param Zend_Http_Client $client The client
+     */
+    public function setClient($client)
+    {
+        $this->_client = $client;
+    }
 	
 	/**
 	 * Strategy pattern  for extensions
@@ -105,6 +111,11 @@ class Wally_Wordpress
 	 */
 	protected function _init()
 	{
+		$this->_client = new Wally_Wordpress_Client($this->_host);
+		$this->_client->setUsername($this->_username);
+		$this->_client->setPassword($this->_password);
+		
+		$this->_client->setHttpClient(new Zend_Http_Client($this->_host));
 	}
 	
 	public function __call($method, $args)

@@ -8,6 +8,9 @@
 abstract class Wally_Wordpress_Model_Abstract
 {
 	protected $_data;
+    protected $_dateFields = array();
+
+    protected $_dateFormat = "yyyyMMddTHHmmss";
 	
 	public function __construct()
 	{
@@ -40,6 +43,12 @@ abstract class Wally_Wordpress_Model_Abstract
 	 */
 	public function __set($key, $value)
 	{
+        //Dates are converted using zend_date
+        if (in_array($key, $this->_dateFields)) {
+            $value = new Zend_Date($value, $this->_dateFormat);
+        }
+
+        //Store the value
 		$this->_data[$key] = $value;
 	}
 	
