@@ -29,7 +29,7 @@ class PostsTest
     {
         $this->assertInstanceOf("Wally_Wordpress_Model_Post", $this->_posts->findOneByTitle(POST_TITLE));
     
-        $this->assertInternalType("array", $this->_posts->findAllByTitle(POST_TITLE));
+        $this->assertInstanceOf("Wally_Wordpress_Model_Posts", $this->_posts->findAllByTitle(POST_TITLE));
     
         $this->assertGreaterThan(0, count($this->_posts->findAllByTitle(POST_TITLE)));
     
@@ -65,7 +65,7 @@ class PostsTest
     {
         $anotherContent = "Another content...";
         
-        $page = $this->_posts->findOneByTitle(CREATE_POST_TITLE);
+        $page = $this->_posts->findOneByTitle(POST_TITLE);
     
         $page->content = $anotherContent;
     
@@ -73,7 +73,7 @@ class PostsTest
     
         $this->_getPosts();
     
-        $page = $this->_posts->findOneByTitle(CREATE_POST_TITLE);
+        $page = $this->_posts->findOneByTitle(POST_TITLE);
         $this->assertEquals($anotherContent, $page->content);
     }
     

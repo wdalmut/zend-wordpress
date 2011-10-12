@@ -19,13 +19,13 @@ define("USERNAME", "");
 define("PASSWORD", "");
 
 define("USER_ID", 1);
-define("TAG_NAME", "tag-1-1");
-define("CATEGORY_NAME", "category-1-1");
-define("PAGE_TITLE", "page-1-1");
+define("TAG_NAME", "tag-1");
+define("CATEGORY_NAME", "category-1");
+define("PAGE_TITLE", "page-1");
 define("CREATE_PAGE_TITLE", "XMLRPC Create");
 define("CREATE_PAGE_DESCRIPTION", "This is the content");
 
-define("POST_TITLE", "post-1-1");
+define("POST_TITLE", "post-1");
 define("CREATE_POST_TITLE", "POST XMLRPC Create");
 define("CREATE_POST_DESCRIPTION", "This is the content of the posts.");
 
