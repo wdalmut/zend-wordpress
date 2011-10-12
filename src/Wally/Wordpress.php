@@ -80,7 +80,7 @@ class Wordpress
 	 * 
 	 * Crete the Wordpress Connection
 	 * 
-	 * @param string|Zend_Uri $host The host
+	 * @param string|Zend\Uri $host The host
 	 * @param string $username
 	 * @param string $password
 	 */
@@ -88,7 +88,7 @@ class Wordpress
 	{
 		$host = $this->_setUri($host);
 		
-		$this->_host = $host->getUri();
+		$this->_host = $host->toString();
 		$this->_username = $username;
 		$this->_password = $password;
 		
@@ -100,7 +100,7 @@ class Wordpress
      * 
      * Useful method for testing
      *
-     * @param Zend_Http_Client $client The client
+     * @param Zend\Http\Client $client The client
      */
     public function setClient($client)
     {
@@ -114,11 +114,11 @@ class Wordpress
 	 */
 	protected function _init()
 	{
-		$this->_client = new Wally_Wordpress_Client($this->_host);
+		$this->_client = new \Wally\Wordpress\Client($this->_host);
 		$this->_client->setUsername($this->_username);
 		$this->_client->setPassword($this->_password);
 		
-		$this->_client->setHttpClient(new Zend_Http_Client($this->_host));
+		$this->_client->setHttpClient(new \Zend\Http\Client($this->_host));
 	}
 	
 	public function __call($method, $args)
@@ -130,20 +130,23 @@ class Wordpress
 	 * 
 	 * Work on blog uri
 	 * 
-	 * @param Zend_Uri|string $uri The user URI
+	 * @param Zend\Uri|string $uri The user URI
 	 * 
-	 * @return Zend_Uri The real URI
+	 * @return Zend\Uri The real URI
 	 */
 	protected function _setUri($uri)
 	{
-	    if (!($uri instanceof Zend_Uri)) {
-	        //transform to Zend_Uri
+	    if (!($uri instanceof Zend\Uri)) {
+	        //transform to Zend\Uri
 	        if (strpos($uri, "http://") === false) {
 	            $uri = "http://{$uri}";
 	            
-	            $uri = Zend_Uri::factory($uri);
+	            //$uri = \Zend\Uri::factory($uri);
+                
+                $uri = new \Zend\Uri\Uri($uri);
 	        } else {
-	            $uri = Zend_Uri::factory($uri);
+	            //$uri = \Zend\Uri::factory($uri);
+                $uri = new \Zend\Uri\Uri($uri);
 	        }
 	    }
 
