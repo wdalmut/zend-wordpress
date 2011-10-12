@@ -1,13 +1,6 @@
 Zend Wordpress
 --------------
 
-See binpress at: http://www.binpress.com/app/wordpress-xmlrpc-to-zend-framework-connector/562 for project documentation.
-
-Tests
------
-
-Tests use a real wordpress instance for working at this time, see the bootstrap.php file for put your access data.
-
 Brief Description
 -----------------
 
