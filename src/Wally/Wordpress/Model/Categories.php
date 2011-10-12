@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Cateogories array access base class
@@ -9,8 +12,8 @@
  * @author Walter Dal Mut
  *
  */ 
-class Wally_Wordpress_Model_Categories
-    extends Wally_Wordpress_Model_ArrayStruct
+class Categories
+    extends Wally\Wordpress\Model\ArrayStruct
 {
     
 }

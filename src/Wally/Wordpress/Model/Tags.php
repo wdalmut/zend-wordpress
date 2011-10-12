@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /** 
  * 
  * Tags array access
@@ -6,8 +9,8 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_Tags
-    extends Wally_Wordpress_Model_ArrayStruct
+class Tags
+    extends Wally\Wordpress\Model\ArrayStruct
 {
 
 }

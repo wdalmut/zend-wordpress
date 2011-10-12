@@ -1,4 +1,7 @@
 <?php 
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Filter model class for comments
@@ -9,7 +12,7 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_CommentsFilter
+class CommentsFilter
 {
     private $_offset;
     private $_status;
@@ -54,7 +57,7 @@ class Wally_Wordpress_Model_CommentsFilter
         return $this->_limit;
     }
     
-    public function setPost(Wally_Wordpress_Model_Post $post)
+    public function setPost(Wally\Wordpress\Model\Post $post)
     {
         $this->_post = $post;
         return $this;
@@ -68,7 +71,7 @@ class Wally_Wordpress_Model_CommentsFilter
     public function toArray()
     {
         $status = array();
-        if ($this->_status != Wally_Wordpress::COMMENT_ALL) {
+        if ($this->_status != Wally\Wordpress::COMMENT_ALL) {
             $status = array('status' => $this->_status);
         }
         

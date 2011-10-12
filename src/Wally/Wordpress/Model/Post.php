@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /** 
  * 
  * This class model a post of blog
@@ -6,8 +9,8 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_Post
-    extends Wally_Wordpress_Model_Page
+class Post
+    extends Wally\Wordpress\Model\Page
 {
     const TITLE = 'title';
     const CONTENT = 'content';
@@ -69,7 +72,7 @@ class Wally_Wordpress_Model_Post
         return parent::toArray();;
     }
     
-    public function setCommentsFilter(Wally_Wordpress_Model_CommentsFilter $commentsFilter)
+    public function setCommentsFilter(Wally\Wordpress\Model\CommentsFilter $commentsFilter)
     {
         $this->_commentsFilter = $commentsFilter;
     }
