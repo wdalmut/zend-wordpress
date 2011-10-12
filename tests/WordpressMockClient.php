@@ -12,12 +12,23 @@ class WordpressMockClient
         $classname = "Wally_Wordpress_Model_{$listName}";
         $pages = new $classname();
 
-
-        for ($i=0; $i<10; $i++) {
+        for ($i=1; $i<11; $i++) {
             $classname = "Wally_Wordpress_Model_{$modelName}";
             $model = new $classname();
-            $model->title = strtolower($modelName) . "-{++$i}-{$extra}";
-            $model->username = "username-{++$i}-{$extra}";
+            $model->title = strtolower($modelName) . "-{$i}";
+            $model->username = "username-{$i}";
+            $model->userid = 1;
+            $model->userId = 1;
+            $model->isAdmin = 1;
+            $model->blogid = 1;
+            $model->pageId = 1;
+            $model->pageStatus = Wally_Wordpress::PUBLISH;
+            $model->dateCreated = Zend_Date::now()->subDay(100);
+            $model->dateCreatedGmt = Zend_Date::now()->subDay(100);
+            $model->categoryName = "category-{$i}";
+            $model->content = "Another content...";
+            $model->name = "tag-{$i}";
+            $model->count = 10;
 
             $pages[] = $model;
         }
@@ -42,15 +53,21 @@ class WordpressMockClient
         return $this->_generateLists("Categories", "Category", $blogId);
     }
 
-    public function getPosts($postCount = 5, $blogId = 1)
+    public function getPosts($numberOfPosts = 5, $blogId = 1)
     {
+		if (is_array($numberOfPosts) && count($numberOfPosts)) {
+			$numberOfPosts = $numberOfPosts[0];
+        } else {
+            $numberOfPosts = 5;
+        }
+
         $posts =  $this->_generateLists("Posts", "Post", $blogId);
 
         $list = new Wally_Wordpress_Model_Posts();
-        for ($i=0; $i<$postCount; $i++) {
-            $list[] = $post[$i];
+        for ($i=0; $i<$numberOfPosts; $i++) {
+            $list[] = $posts[$i];
         }
-        return $posts;
+        return $list;
     }
 
     public function getAuthors($blogId = 1)
