@@ -16,7 +16,7 @@ class Wally_Wordpress_Model_ArrayStruct
 	public function find($name, $arg, $all = false, $operator = self::EQUALS)
 	{
 		if ($arg instanceof Zend_Date) {
-			$elements = new self();
+			$elements = new $this();
 			foreach ($this->container as $element) {
 				$status = false;
 				switch ($operator) {
@@ -40,7 +40,7 @@ class Wally_Wordpress_Model_ArrayStruct
 				}
 			}
 		} else {
-			$elements = new self();
+			$elements = new $this();
 			foreach ($this->container as $element) {
 				
 				$status = false;
