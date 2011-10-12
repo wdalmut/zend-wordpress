@@ -28,7 +28,7 @@ class PagesTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf("Wally_Wordpress_Model_Page", $this->_pages->findOneByTitle(PAGE_TITLE));
         
-        $this->assertInternalType("array", $this->_pages->findAllByTitle(PAGE_TITLE));
+        $this->assertInstanceOf("Wally_Wordpress_Model_Pages", $this->_pages->findAllByTitle(PAGE_TITLE));
         
         $this->assertGreaterThan(0, count($this->_pages->findAllByTitle(PAGE_TITLE)));
         
@@ -73,7 +73,7 @@ class PagesTest extends PHPUnit_Framework_TestCase
     
     public function testPageEdit()
     {
-        $page = $this->_pages->findOneByTitle(CREATE_PAGE_TITLE);
+        $page = $this->_pages->findOneByTitle(PAGE_TITLE);
         
         $page->pageStatus = Wally_Wordpress::PUBLISH;
         
@@ -81,7 +81,7 @@ class PagesTest extends PHPUnit_Framework_TestCase
         
         $this->_getPages();
         
-        $page = $this->_pages->findOneByTitle(CREATE_PAGE_TITLE);
+        $page = $this->_pages->findOneByTitle(PAGE_TITLE);
         $this->assertEquals(Wally_Wordpress::PUBLISH, $page->pageStatus);
     }
     
@@ -105,7 +105,7 @@ class PagesTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf("Zend_Date", $page->dateCreatedGmt);
         
         $pages = $this->_pages->findAllByDateCreated($page->dateCreated);
-        $this->assertGreaterThan(0, $pages);
+        $this->assertGreaterThan(0, count($pages));
         
         $page = $this->_pages->findOneLessThanDateCreated(Zend_Date::now());
         $this->assertInstanceOf("Wally_Wordpress_Model_Page", $page);
