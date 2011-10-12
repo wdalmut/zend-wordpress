@@ -10,7 +10,7 @@ namespace Wally\Wordpress;
  *
  */
 class Client
-	extends Zend\XmlRpc\Client
+	extends \Zend\XmlRpc\Client
 {
     /**
      * @var string The blog username
