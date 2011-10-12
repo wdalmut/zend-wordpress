@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Page model.
@@ -8,8 +11,8 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_Page
-	extends Wally_Wordpress_Model_Abstract
+class Page
+	extends Wally\Wordpress\Model\Abstract
 {
 	const WP_DATE = 'dateCreated';
 	const WP_DATE_GMT = 'dateCreatedGmt';
@@ -31,12 +34,12 @@ class Wally_Wordpress_Model_Page
 		foreach ($data as $key => $value) {
 		    if ($key != self::WP_DATE) {
     			$f = new Zend_Filter;
-    			$f->addFilter(new Zend_Filter_Word_CamelCaseToSeparator("_"));
-    			$f->addFilter(new Zend_Filter_StringToLower());
+    			$f->addFilter(new Zend\Filter\Word\CamelCaseToSeparator("_"));
+    			$f->addFilter(new Zend\Filter\StringToLower());
     			$key = $f->filter($key);
 		    }
 		    
-		    if ($value instanceof Zend_Date) {
+		    if ($value instanceof Zend\Date) {
 		        $value = $value->toString("yyyyMMddTHHmmss");
 		    }
 		    

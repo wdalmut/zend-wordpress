@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Comments array access base class 
@@ -6,8 +9,8 @@
  * @author Walter Dal Mut
  *
  */ 
-class Wally_Wordpress_Model_Comments
-    extends Wally_Wordpress_Model_ArrayStruct
+class Comments
+    extends Wally\Wordpress\Model\ArrayStruct
 {
     
 }

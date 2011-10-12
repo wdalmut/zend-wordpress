@@ -73,9 +73,9 @@ abstract class Abstract
 		
 		$clear = array();
 		foreach ($data as $key => $value) {
-			$f = new Zend_Filter;
-			$f->addFilter(new Zend_Filter_Word_CamelCaseToSeparator("_"));
-			$f->addFilter(new Zend_Filter_StringToLower());
+			$f = new Zend\Filter;
+			$f->addFilter(new Zend\Filter\Word\CamelCaseToSeparator("_"));
+			$f->addFilter(new Zend\Filter\StringToLower());
 			$key = $f->filter($key);
 			$clear[$key] = $value;
 		}

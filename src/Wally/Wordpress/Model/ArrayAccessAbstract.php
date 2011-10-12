@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Array Access abstract class
@@ -6,7 +9,7 @@
  * @author Walter Dal Mut
  *
  */
-abstract class Wally_Wordpress_Model_ArrayAccessAbstract
+abstract class ArrayAccessAbstract
 	implements ArrayAccess, Iterator, Countable 
 {
 	private $position = 0;
@@ -70,9 +73,9 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	public function __call($method, $arguments)
 	{
 		if (@preg_match('/(find(?:One|All)?(?:By|GreaterThan|LessThan))(.+)/', $method, $match)) {
-			return $this->{$match[1]}(Wally_Wordpress_Tool::lcfirst($match[2]), $arguments[0]);
+			return $this->{$match[1]}(lcfirst($match[2]), $arguments[0]);
 		} else {
-			throw new Zend_Exception("Method {$method} not allowed. Use findBy regexp methods");
+			throw new Wally\Wordpress\Exception\Runtime("Method {$method} not allowed. Use findBy regexp methods");
 		}
 	}
 	

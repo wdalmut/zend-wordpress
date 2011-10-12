@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Category model
@@ -6,7 +9,7 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_Category
-	extends Wally_Wordpress_Model_Abstract
+class Category
+	extends Wally\Wordpress\Model\Abstract
 {
 }

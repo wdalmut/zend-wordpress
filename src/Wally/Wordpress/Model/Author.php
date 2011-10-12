@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Author model base class
@@ -6,8 +9,8 @@
  * @author Walter Dal Mut
  *
  */
-class Wally_Wordpress_Model_Author
-    extends Wally_Wordpress_Model_Abstract
+class Author
+    extends Wally\Wordpress\Model\Abstract
 {
 	
 }

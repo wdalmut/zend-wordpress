@@ -1,4 +1,7 @@
 <?php
+
+namespace Wally\Wordpress\Model;
+
 /**
  * 
  * Array struct base class
@@ -10,8 +13,8 @@
  * @author Walter Dal Mut
  *
  */ 
-class Wally_Wordpress_Model_ArrayStruct
-    extends Wally_Wordpress_Model_ArrayAccessAbstract
+class ArrayStruct
+    extends Wally\Wordpress\Model\ArrayAccessAbstract
 {
     public function find($name, $arg, $all = false, $operator = self::EQUALS)
     {
@@ -20,13 +23,13 @@ class Wally_Wordpress_Model_ArrayStruct
     
             $status = false;
             switch ($operator) {
-                case Wally_Wordpress_Model_ArrayAccessAbstract::EQUALS:
+                case Wally\Wordpress\Model\ArrayAccessAbstract::EQUALS:
                     $status = $element->$name == $arg;
                     break;
-                case Wally_Wordpress_Model_ArrayAccessAbstract::GREATER_THAN:
+                case Wally\Wordpress\Model\ArrayAccessAbstract::GREATER_THAN:
                     $status = $element->$name > $arg;
                     break;
-                case Wally_Wordpress_Model_ArrayAccessAbstract::LESS_THAN:
+                case Wally\Wordpress\Model\ArrayAccessAbstract::LESS_THAN:
                     $status = $element->$name < $arg;
                     break;
             }
