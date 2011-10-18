@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+    <name>Wally</name>
+    <channel>pear.walterdalmut.com</channel>
+    <summary>WordPress XML-RPC to Zend Framework Connector</summary>
+    <description>
+        A Zend Framework based library to access, fetch and write data to remote Wordpress instances. Also works with other framework based and baseline PHP applications.
+    </description>
+    <lead>
+        <name>Walter Dal Mut</name>
+        <user>walter</user>
+        <email>walter.dalmut@gmail.com</email>
+        <active>yes</active>
+    </lead>
+    <date>2011-09-06</date>
+    <time>16:00:00</time>
+    <version>
+        <release>1.0.1</release>
+        <api>1.0.1</api>
+    </version>
+    <stability>
+        <release>stable</release>
+        <api>stable</api>
+    </stability>
+    <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
+    <notes>-</notes>
+    <contents>
+        <dir name="" baseinstalldir="/Wally">
+            <file role="php" name="Wordpress.php" />
+            <dir name="Wordpress">
+                <file role="php" name="Client.php" />
+                <file role="php" name="Tool.php" />
+                <dir name="Model">
+                    <file role="php" name="Abstract.php" />
+                    <file role="php" name="ArrayAccessAbstract.php" />
+                    <file role="php" name="ArrayStruct.php" />
+                    <file role="php" name="Author.php" />
+                    <file role="php" name="Authors.php" />
+                    <file role="php" name="Categories.php" />
+                    <file role="php" name="Category.php" />
+                    <file role="php" name="Comment.php" />
+                    <file role="php" name="Comments.php" />
+                    <file role="php" name="CommentsFilter.php" />
+                    <file role="php" name="Page.php" />
+                    <file role="php" name="Pages.php" />
+                    <file role="php" name="Post.php" />
+                    <file role="php" name="Posts.php" />
+                    <file role="php" name="Tag.php" />
+                    <file role="php" name="Tags.php" />
+                </dir>
+            </dir>
+        </dir>
+    </contents>
+    <dependencies>
+        <required>
+            <php>
+                <min>5.0.0</min>
+            </php>
+            <pearinstaller>
+                <min>1.4.0</min>
+            </pearinstaller>
+        </required>
+    </dependencies>
+    <phprelease />
+</package>
