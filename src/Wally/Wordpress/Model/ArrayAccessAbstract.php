@@ -70,7 +70,7 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	public function __call($method, $arguments)
 	{
 		if (@preg_match('/(find(?:One|All)?(?:By|GreaterThan|LessThan))(.+)/', $method, $match)) {
-			return $this->{$match[1]}(Wally_Wordpress_Tool::lcfirst($match[2]), $arguments[0]);
+			return $this->{$match[1]}(lcfirst($match[2]), $arguments[0]);
 		} else {
 			throw new Zend_Exception("Method {$method} not allowed. Use findBy regexp methods");
 		}
@@ -107,4 +107,11 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	}
 	
 	abstract public function find($name, $arg, $all = false, $operator = self::EQUALS);
+}
+
+if (!function_exists("lcfirst")) {
+    function lcfirst($string)
+    {
+        return strtolower($string{0}) . substr($string, 1);
+    }
 }
