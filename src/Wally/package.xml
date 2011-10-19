@@ -32,7 +32,6 @@
             <file role="php" name="Wordpress.php" />
             <dir name="Wordpress">
                 <file role="php" name="Client.php" />
-                <file role="php" name="Tool.php" />
                 <dir name="Model">
                     <file role="php" name="Abstract.php" />
                     <file role="php" name="ArrayAccessAbstract.php" />
