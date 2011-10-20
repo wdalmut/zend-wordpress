@@ -13,7 +13,7 @@ namespace Wally\Wordpress\Model;
  *
  */
 class Pages
-	extends Wally\Wordpress\Model\ArrayStruct
+	extends \Wally\Wordpress\Model\ArrayStruct
 {
     protected $_dateFields = array(
         Wally_Wordpress_Model_Page::WP_DATE,

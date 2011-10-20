@@ -10,7 +10,7 @@ namespace Wally\Wordpress\Model;
  *
  */
 abstract class ArrayAccessAbstract
-	implements ArrayAccess, Iterator, Countable 
+	implements \ArrayAccess, \Iterator, \Countable 
 {
 	private $position = 0;
 	protected $container = array();

@@ -10,7 +10,7 @@ namespace Wally\Wordpress\Model;
  *
  */
 class Post
-    extends Wally\Wordpress\Model\Page
+    extends \Wally\Wordpress\Model\Page
 {
     const TITLE = 'title';
     const CONTENT = 'content';
