@@ -14,7 +14,7 @@ namespace Wally\Wordpress\Model;
  *
  */ 
 class ArrayStruct
-    extends Wally\Wordpress\Model\ArrayAccessAbstract
+    extends \Wally\Wordpress\Model\ArrayAccessAbstract
 {
 	public function find($name, $arg, $all = false, $operator = self::EQUALS)
 	{

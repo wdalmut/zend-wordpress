@@ -10,7 +10,7 @@ namespace Wally\Wordpress\Model;
  *
  */
 class Posts
-    extends Wally\Wordpress\Model\Pages
+    extends \Wally\Wordpress\Model\Pages
 {
     
 }

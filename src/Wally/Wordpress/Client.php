@@ -148,6 +148,8 @@ class Client
 			array('numberOfPosts' => $numberOfPosts),
 			"blogger"
 		);
+
+        die(Var_dump($list));
 		
 		$default = $this->_toPages($list, "Post", "Posts");
 		
@@ -358,17 +360,15 @@ class Client
 	
 	private function _toPages($list, $class = "Page", $parentClass = "Pages")
 	{
-	    $classname = "Wally\Wordpress\Model\{$class}";
-	    $parentClassname = "Wally\Wordpress\Model\{$parentClass}";
-	    
+	    $classname = "\\Wally\\Wordpress\\Model\\{$class}";
+	    $parentClassname = "\\Wally\\Wordpress\\Model\\{$parentClass}";
+
 		$default = new $parentClassname();
 		foreach ($list as $a => $b) {
 			$s = new $classname();
 			foreach ($b as $k => $w) {
-				$t = new Zend\Filter();
-				$t->addFilter(new Zend\Filter\Word\SeparatorToCamelCase("_"));
 		
-				$r = lcfirst($t->filter($k));
+				$r = lcfirst($k);
 				$s->$r = $w;
 			}
 		
