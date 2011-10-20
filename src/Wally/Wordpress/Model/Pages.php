@@ -16,7 +16,7 @@ class Pages
 	extends \Wally\Wordpress\Model\ArrayStruct
 {
     protected $_dateFields = array(
-        Wally_Wordpress_Model_Page::WP_DATE,
-        Wally_Wordpress_Model_Page::WP_DATE_GMT    
+        \Wally\Wordpress\Model\Page::WP_DATE,
+        \Wally\Wordpress\Model\Page::WP_DATE_GMT    
     );
 }

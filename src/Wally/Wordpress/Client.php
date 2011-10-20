@@ -120,7 +120,7 @@ class Client
 	    );
 	    
 	    $struct = array_merge($post->getCommentsFilter()->toArray(), $struct);
-	    
+
 	    $list = $this->_wpMethod(
 	        'getComments',
 	        array('blog_id' => $blogId), 
@@ -149,8 +149,6 @@ class Client
 			"blogger"
 		);
 
-        die(Var_dump($list));
-		
 		$default = $this->_toPages($list, "Post", "Posts");
 		
 		return $default;
