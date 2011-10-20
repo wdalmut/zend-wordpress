@@ -12,7 +12,7 @@ namespace Wally\Wordpress\Model;
  *
  */
 class Page
-	extends Wally\Wordpress\Model\Abstract
+	extends \Wally\Wordpress\Model\PageAbstract
 {
 	const WP_DATE = 'dateCreated';
 	const WP_DATE_GMT = 'dateCreatedGmt';
@@ -20,7 +20,7 @@ class Page
 	public function __set($key, $value)
 	{
 		if ($key == self::WP_DATE || $key == self::WP_DATE_GMT) {
-			$value = new Zend_Date($value, Zend_Date::ISO_8601);
+			$value = new \Zend\Date\Date($value, \Zend\Date\Date::ISO_8601);
 		}
 		
 		parent::__set($key, $value);
