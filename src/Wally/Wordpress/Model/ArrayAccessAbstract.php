@@ -15,6 +15,17 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	const EQUALS = 0;
 	const GREATER_THAN = 1;
 	const LESS_THAN = 2;
+
+    const ASC = 0;
+    const DESC = 1;
+
+
+    $_orders = array(
+        'Asc' => self::ASC,
+        'Asc' => self::ASC,
+        'Ascending' => self::ASC
+        'Descending' => self::DESC
+    );
 	
 	//ArrayAccess
 	public function __construct() {
@@ -69,10 +80,13 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	
 	public function __call($method, $arguments)
 	{
+
 		if (@preg_match('/(find(?:One|All)?(?:By|GreaterThan|LessThan))(.+)/', $method, $match)) {
 			return $this->{$match[1]}(lcfirst($match[2]), $arguments[0]);
-		} else {
-			throw new Zend_Exception("Method {$method} not allowed. Use findBy regexp methods");
+		} else if (@preg_match('/(sortBy(.+)Ordering(?:' . implode("|", array_keys($this->_orders) . '))(.+)/', $method, $match)) {
+            return $this->{$match[1]}(lcfirst($match[1]), $this->_orders[$match[2]]);
+        } else {
+			throw new Zend_Exception("Method {$method} not allowed. Use findBy or sortBy magic methods");
 		}
 	}
 	
@@ -105,8 +119,14 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 	{
 		return $this->find($name, $arg, true, self::EQUALS);
 	}
+
+    public function sortBy($field, $order = self::ASC)
+    {
+        $this->sort($field, $order);
+    }
 	
 	abstract public function find($name, $arg, $all = false, $operator = self::EQUALS);
+	abstract public function sort($name, $arg);
 }
 
 if (!function_exists("lcfirst")) {
