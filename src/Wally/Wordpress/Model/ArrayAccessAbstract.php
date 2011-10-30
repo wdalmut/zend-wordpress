@@ -83,8 +83,8 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 
 		if (@preg_match('/(find(?:One|All)?(?:By|GreaterThan|LessThan))(.+)/', $method, $match)) {
 			return $this->{$match[1]}(lcfirst($match[2]), $arguments[0]);
-		} else if (@preg_match('/(sortBy(.+)Ordering(?:' . implode("|", array_keys($this->_orders)) . '))(.+)/', $method, $match)) {
-            return $this->{$match[1]}(lcfirst($match[1]), $this->_orders[$match[2]]);
+		} else if (@preg_match('/(sortBy)(.+)(Order)(.+)/', $method, $match)) {
+            return $this->{$match[1]}(lcfirst($match[2]), $this->_orders[$match[4]]);
         } else {
 			throw new Zend_Exception("Method {$method} not allowed. Use findBy or sortBy magic methods");
 		}
