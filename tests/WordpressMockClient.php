@@ -17,18 +17,18 @@ class WordpressMockClient
             $model = new $classname();
             $model->title = strtolower($modelName) . "-{$i}";
             $model->username = "username-{$i}";
-            $model->userid = 1;
-            $model->userId = 1;
+            $model->userid = $i;
+            $model->userId = $i;
             $model->isAdmin = 1;
             $model->blogid = 1;
-            $model->pageId = 1;
+            $model->pageId = $i;
             $model->pageStatus = Wally_Wordpress::PUBLISH;
-            $model->dateCreated = Zend_Date::now()->subDay(100);
-            $model->dateCreatedGmt = Zend_Date::now()->subDay(100);
+            $model->dateCreated = Zend_Date::now()->subDay($i);
+            $model->dateCreatedGmt = Zend_Date::now()->subDay($i);
             $model->categoryName = "category-{$i}";
             $model->content = "Another content...";
-            $model->name = "tag-{$i}";
-            $model->count = 10;
+            $model->name = "tag$i*2-{$i}";
+            $model->count = $i*2;
 
             $pages[] = $model;
         }
