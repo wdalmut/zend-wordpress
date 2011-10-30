@@ -90,11 +90,11 @@ class Wally_Wordpress_Model_ArrayStruct
         for ($i=0; $i<$this->count(); $i++) {
             for ($j=0; $j<($this->count()-1); $j++) {
                 if (is_numeric($this[$i]->$name )){
-                    $this->_sortNumeric($i, $j);
+                    $this->_sortNumeric($name, $j, $arg);
                 } else if (is_string($this[$i]->$name)) {
-                    $this->_sortString($i, $j);
+                    $this->_sortString($name, $j, $arg);
                 } else if ($this[$i]->$name instanceof Zend_Date) {
-                    $this->_sortDate($i, $j);
+                    $this->_sortDate($name, $j, $arg);
                 }
             }
         }
@@ -106,9 +106,9 @@ class Wally_Wordpress_Model_ArrayStruct
         $this[$b] = $tmp;
     }
 
-    private function _sortNumeric($i, $j)
+    private function _sortNumeric($name, $j, $operator)
     {
-        if ($operator == self::SORT_ASC) {
+        if ($operator == self::ASC) {
             if ($this[$j+1]->$name < $this[$j]->$name){
                 $this->_swap( $j, $j+1);
             }
@@ -119,9 +119,9 @@ class Wally_Wordpress_Model_ArrayStruct
         }
     }
 
-    private function _sortString($i, $j)
+    private function _sortString($name, $j, $operator)
     {
-        if ($operator == self::SORT_ASC) {
+        if ($operator == self::ASC) {
             if (strcmp( $this[$j+1]->$name ,  $this[$j]->$name ) < 0) {
                 $this->_swap( $j, $j+1);
             }
@@ -132,9 +132,9 @@ class Wally_Wordpress_Model_ArrayStruct
         }
     }
 
-    private function _sortDate($i, $j)
+    private function _sortDate($name, $j, $operator)
     {
-        if ($operator == self::SORT_ASC) {
+        if ($operator == self::ASC) {
             if ($this[$j+1]->$name->isEarlier( $this[$j]->$name)) {
                 $this->_swap( $j, $j+1);
             }
