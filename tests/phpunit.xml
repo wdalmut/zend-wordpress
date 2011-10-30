@@ -28,6 +28,7 @@
 	    	<file>PagesTest.php</file>
 	    	<file>PostsTest.php</file>
 	    	<file>AuthorsTest.php</file>
+            <file>SortTest.php</file>
 	  	</testsuite>
 	</testsuites>
 	<logging>
