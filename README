@@ -24,6 +24,7 @@ Features
  * Get users of all your blogs or any specific blog
  * PHPUnit tested - more than 70% of the code under test
  * PEAR Packages available http://pear.walterdalmut.com
+ * Finder and Sorter methods available on all available fields.
 
 This library use the ZF1 autoloader, and it is written for working on PHP 5.x or later.
 
@@ -37,3 +38,5 @@ Retrive page list and use magic finder methods for get a single page.
 //Get all pages
 $pages = $wp->getPages();
 $page = $pages->findOneByUsername("walter");
+
+$pages->sortByTitleOrderAsc(); //Sort ascending by title
