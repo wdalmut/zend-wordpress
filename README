@@ -1,5 +1,5 @@
 Zend Wordpress
---------------
+==============
 
 Brief Description
 -----------------
@@ -39,4 +39,5 @@ Retrive page list and use magic finder methods for get a single page.
 $pages = $wp->getPages();
 $page = $pages->findOneByUsername("walter");
 
+//Sort pages ascending by title
 $pages->sortByTitleOrderAsc(); //Sort ascending by title
