@@ -26,7 +26,7 @@ Features
  * PEAR Packages available http://pear.walterdalmut.com
  * Finder and Sorter methods available on all available fields.
 
-This library use the ZF1 autoloader, and it is written for working on PHP 5.x or later.
+This library use the ZF2 autoloader, and it is written for working on PHP 5.3.2 or later.
 
 Base Wordpress connection
 -------------------------
