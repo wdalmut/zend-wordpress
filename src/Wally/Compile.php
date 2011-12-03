@@ -1,43 +1,158 @@
 <?php 
 namespace Wally;
 
+/**
+ * Phar compile procedure.
+ * 
+ * @author Walter Dal Mut
+ *
+ * @todo needs complete refactor
+ */
 class Compile
 {
+    private function _addDir($phar, $path, $stripPath, $suffix = '', $prefix = '', $exclude = array())
+    {
+        $fileIterator = \File_Iterator_Factory::getFileIterator(
+            $path,
+            $suffix, 
+            $prefix, 
+            $exclude
+        );
+        
+        foreach ($fileIterator as $file) {
+            if ($file->isFile()) {
+                $path = str_replace($stripPath, "", $file->getPath());
+
+                $phar->addFile($file, $path . "/" . $file->getFilename());
+            }
+        }
+    }
 
     public function compile($pharFile = 'zend-wordpress.phar')
     {
+        if (file_exists($pharFile)) {
+            unlink($pharFile);
+        }
+        
         $phar = new \Phar($pharFile);
         $phar->setSignatureAlgorithm(\Phar::SHA1);
         
         $phar->startBuffering();
         
-        $phar->addFile(dirname(__FILE__) . "/Wordpress.php", 'Wally/Wordpress.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Client.php", 'Wally/Wordpress/Client.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Abstract.php", 'Wally/Wordpress/Model/Abstract.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/ArrayAccessAbstract.php", 'Wally/Wordpress/Model/ArrayAccessAbstract.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/ArrayStruct.php", 'Wally/Wordpress/Model/ArrayStruct.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Author.php", 'Wally/Wordpress/Model/Author.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Authors.php", 'Wally/Wordpress/Model/Authors.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Categories.php", 'Wally/Wordpress/Model/Categories.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Category.php", 'Wally/Wordpress/Model/Category.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Comment.php", 'Wally/Wordpress/Model/Comment.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Comments.php", 'Wally/Wordpress/Model/Comments.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/CommentsFilter.php", 'Wally/Wordpress/Model/CommentsFilter.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Page.php", 'Wally/Wordpress/Model/Page.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Pages.php", 'Wally/Wordpress/Model/Pages.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Post.php", 'Wally/Wordpress/Model/Post.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Posts.php", 'Wally/Wordpress/Model/Posts.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Tag.php", 'Wally/Wordpress/Model/Tag.php');
-        $phar->addFile(dirname(__FILE__) . "/Wordpress/Model/Tags.php", 'Wally/Wordpress/Model/Tags.php');
+        $phar->addFile("autoload.php");
         
-        //I have to add ZF1 some lib parts too...
+        $this->_addDir(
+            $phar, 
+            dirname(__FILE__), 
+            realpath(dirname(__FILE__)."/../") . "/",
+        	"php"
+        );
+        
+        //Loader
+        $phar->addFile(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Loader.php', 'Zend/Loader.php');
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Loader'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //XmlRpc
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/XmlRpc'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Http
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Http'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Uri
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Uri'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Date
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Date'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Cache
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Cache'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Filter
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Filter'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Validator
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Validator'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+        
+        //Validator
+        $this->_addDir(
+            $phar,
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Stdlib'),
+            realpath(dirname(__FILE__) . '/../../vendor/zend/library') . '/',
+            'php'
+        );
+
+        //Registry
+        $phar->addFile(realpath(dirname(__FILE__) . '/../../vendor/zend/library/Zend/Registry.php'), 'Zend/Registry.php');
         
         $phar->addFile(realpath(dirname(__FILE__) . "/../../LICENSE"));
         
+        $phar->setStub($this->getStub());
+        
         $phar->stopBuffering();
         
-        $phar->compressFiles(\Phar::GZ);
+//         $phar->compressFiles(\Phar::GZ);
         
         unset($phar);
+    }
+    
+    protected function getStub()
+    {
+        return <<<'EOF'
+    <?php
+    /*
+     * This file is part of the Silex framework.
+     *
+     * (c) Fabien Potencier <fabien@symfony.com>
+     *
+     * This source file is subject to the MIT license that is bundled
+     * with this source code in the file LICENSE.
+     */
+    
+    Phar::mapPhar('zend-wordpress.phar');
+    
+    require_once 'phar://zend-wordpress.phar/autoload.php';
+    
+    __HALT_COMPILER();
+EOF;
     }
 }

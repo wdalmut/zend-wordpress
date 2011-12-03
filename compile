@@ -1,7 +1,11 @@
 #!/usr/bin/env php
 <?php
 
-require_once 'autoload.php';
+if (file_exists('vendor/php-file-iterator/File/Iterator/Autoload.php')) {
+    require_once 'vendor/php-file-iterator/File/Iterator/Autoload.php';
+}
+
+require_once 'src/Wally/Compile.php';
 
 use Wally\Compile;
 

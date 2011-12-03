@@ -1,10 +1,11 @@
 <?php 
-set_include_path(
-    implode(DIRECTORY_SEPARATOR, array(
-        realpath(dirname(__FILE__)) . '/src',
-        get_include_path()
-    ))
-);
+require_once 'Zend/Loader/StandardAutoloader.php';
 
-//No autoload... ZF1 git missing...
-require_once ('Wally/Compile.php');
+use \Zend\Loader\StandardAutoloader as Loader;
+
+$loader = new Loader();
+
+$loader->registerNamespace('Zend', __DIR__ . '/Zend');
+$loader->registerNamespace('Wally', __DIR__ . '/Wally');
+
+$loader->register();
