@@ -31,9 +31,11 @@ This library use the ZF1 autoloader, and it is written for working on PHP 5.x or
 Base Wordpress connection
 -------------------------
 
+```php
+<?php
 $wp = new Wally_Wordpress("your-site-name.com", "username", "password");
 
-Retrive page list and use magic finder methods for get a single page.
+//Retrive page list and use magic finder methods for get a single page.
 
 //Get all pages
 $pages = $wp->getPages();
@@ -41,3 +43,5 @@ $page = $pages->findOneByUsername("walter");
 
 //Sort pages ascending by title
 $pages->sortByTitleOrderAsc(); //Sort ascending by title
+```
+
