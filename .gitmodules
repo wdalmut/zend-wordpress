@@ -1,0 +1,6 @@
+[submodule "vendor/zend"]
+	path = vendor/zend
+	url = /Users/walterdalmut/git/zf2/
+[submodule "vendor/php-file-iterator"]
+	path = vendor/php-file-iterator
+	url = /Users/walterdalmut/git/php-file-iterator/
