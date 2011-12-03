@@ -141,12 +141,9 @@ class Wordpress
 	        if (strpos($uri, "http://") === false) {
 	            $uri = "http://{$uri}";
 	            
-	            //$uri = \Zend\Uri::factory($uri);
-                
-                $uri = new \Zend\Uri\Uri($uri);
+                $uri = \Zend\Uri\UriFactory::factory($uri);
 	        } else {
-	            //$uri = \Zend\Uri::factory($uri);
-                $uri = new \Zend\Uri\Uri($uri);
+                $uri = \Zend\Uri\UriFactory::factory($uri);
 	        }
 	    }
 
