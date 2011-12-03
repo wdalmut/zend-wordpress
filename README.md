@@ -32,6 +32,7 @@ Base Wordpress connection
 -------------------------
 
 ```php
+<?php
 $wp = new \Wally\Wordpress("your-site-name.com", "username", "password");
 
 Retrive page list and use magic finder methods for get a single page.
@@ -50,6 +51,7 @@ PHAR usage
 You can use the Phar archive
 
 ```php
+<?php
 require_once 'zend-wordpress.phar';
 
 $wp = new \Wally\Wordpress("your-site-name.com", "username", "password");
