@@ -35,7 +35,7 @@ Base Wordpress connection
 <?php
 $wp = new \Wally\Wordpress("your-site-name.com", "username", "password");
 
-Retrive page list and use magic finder methods for get a single page.
+//Retrive page list and use magic finder methods for get a single page.
 
 //Get all pages
 $pages = $wp->getPages();
