@@ -44,3 +44,18 @@ $page = $pages->findOneByUsername("walter");
 $pages->sortByTitleOrderAsc(); //Sort ascending by title
 ```
 
+PHAR usage
+----------
+
+You can use the Phar archive
+
+```php
+require_once 'zend-wordpress.phar';
+
+$wp = new \Wally\Wordpress("your-site-name.com", "username", "password");
+
+$pages = $wp->pages();
+//Filter
+$page = $pages->findOneByUsername("walter");
+```
+
