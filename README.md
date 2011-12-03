@@ -59,3 +59,4 @@ $pages = $wp->pages();
 $page = $pages->findOneByUsername("walter");
 ```
 
+The phar archive includes needed Zend library parts and all dependecies of Wally Wordpress library for Zend App. The phar exectute the autoloader for start the library automatically.
