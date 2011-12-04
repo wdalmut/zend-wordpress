@@ -1,6 +1,6 @@
 <?php 
 set_include_path(
-    implode(DIRECTORY_SEPARATOR, array(
+    implode(PATH_SEPARATOR, array(
         realpath(dirname(__FILE__)) . '/src',
         get_include_path()
     ))
