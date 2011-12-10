@@ -140,9 +140,9 @@ class Compile
         return <<<'EOF'
     <?php
     /*
-     * This file is part of the Silex framework.
+     * This file is part of the Zend Wordpress library
      *
-     * (c) Fabien Potencier <fabien@symfony.com>
+     * (c) Walter Dal Mut <walter.dalmut@gmail.com>
      *
      * This source file is subject to the MIT license that is bundled
      * with this source code in the file LICENSE.
