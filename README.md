@@ -1,15 +1,12 @@
-Zend Wordpress
-==============
+# Zend Wordpress
 
-Brief Description
------------------
+## Brief Description
 
 This is a Wordpress XMLRPC connector for Zend Framework based projects, other PHP frameworks based applications and baseline PHP applications.
 
 This library allows you to connect and perform operations on remote Wordpress installations from other applications. You can add pages, posts, work with authors and use many other Wordpress features remotely.
 
-Features
---------
+## Features
 
  * Connect to multiple Wordpress blogs with one connection
  * Get user list and user information from remote blogs
@@ -28,8 +25,7 @@ Features
 
 This library use the ZF1 autoloader, and it is written for working on PHP 5.x or later.
 
-Base Wordpress connection
--------------------------
+## Base Wordpress connection
 
 ```php
 <?php
