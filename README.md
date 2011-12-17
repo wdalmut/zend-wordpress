@@ -1,4 +1,4 @@
-# Zend Wordpress
+# Zend Wordpress [![Build Status](https://secure.travis-ci.org/wdalmut/zend-wordpress.png)](http://travis-ci.org/wdalmut/zend-wordpress?branch=master)
 
 ## Brief Description
 
