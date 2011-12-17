@@ -11,24 +11,14 @@
         stopOnError="false"
         stopOnFailure="false"
         stopOnIncomplete="false"
-        stopOnSkipped="false"
+        stopOnSkipped="true"
         syntaxCheck="false"
         testSuiteLoaderClass="PHPUnit_Runner_StandardTestSuiteLoader"
         strict="false"
         verbose="false">
 	<testsuites>
 		<testsuite name="Wally Wordpress Suite">
-	    	<directory></directory>
-	    	<file>BaseTest.php</file>
-	    	<file>ArrayAccessTest.php</file>
-	    	<file>AbstractTest.php</file>
-	    	<file>ConnectionTest.php</file>
-	    	<file>TagsTest.php</file>
-	    	<file>CategoriesTest.php</file>
-	    	<file>PagesTest.php</file>
-	    	<file>PostsTest.php</file>
-	    	<file>AuthorsTest.php</file>
-            <file>SortTest.php</file>
+	    	<directory>.</directory>
 	  	</testsuite>
 	</testsuites>
 	<logging>
