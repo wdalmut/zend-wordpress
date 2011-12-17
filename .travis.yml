@@ -1,0 +1,10 @@
+language: php
+php:
+  - 5.3
+  - 5.4
+branches:
+  only:
+    - master
+before_script:
+  - sh get-zend.sh
+script: phpunit --colors --bootstrap tests/bootstrap.php tests

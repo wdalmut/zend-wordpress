@@ -1,0 +1,8 @@
+.project
+.settings
+.buildpath
+*.phar
+res/
+check.php
+n.php
+vendor/zend

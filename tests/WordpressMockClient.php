@@ -2,6 +2,10 @@
 
 require_once ("Zend/Http/Client.php");
 
+/**
+ * @todo remove this class completely! 
+ * You have to mock using PHPUnit mocking system. 
+ */
 class WordpressMockClient
     extends Zend_Http_Client
 {
