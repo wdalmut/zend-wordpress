@@ -3,7 +3,7 @@
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
-    <name>Wally</name>
+    <name>Wally_Wordpress</name>
     <channel>pear.walterdalmut.com</channel>
     <summary>WordPress XML-RPC to Zend Framework Connector</summary>
     <description>
@@ -28,28 +28,30 @@
     <license uri="http://www.opensource.org/licenses/mit-license.php">MIT</license>
     <notes>-</notes>
     <contents>
-        <dir name="" baseinstalldir="/Wally">
-            <file role="php" name="Wordpress.php" />
-            <dir name="Wordpress">
-                <file role="php" name="Client.php" />
-                <dir name="Model">
-                    <file role="php" name="Abstract.php" />
-                    <file role="php" name="ArrayAccessAbstract.php" />
-                    <file role="php" name="ArrayStruct.php" />
-                    <file role="php" name="Author.php" />
-                    <file role="php" name="Authors.php" />
-                    <file role="php" name="Categories.php" />
-                    <file role="php" name="Category.php" />
-                    <file role="php" name="Comment.php" />
-                    <file role="php" name="Comments.php" />
-                    <file role="php" name="CommentsFilter.php" />
-                    <file role="php" name="Page.php" />
-                    <file role="php" name="Pages.php" />
-                    <file role="php" name="Post.php" />
-                    <file role="php" name="Posts.php" />
-                    <file role="php" name="Tag.php" />
-                    <file role="php" name="Tags.php" />
-                </dir>
+        <dir name="" baseinstalldir="/">
+            <dir name="Wally">
+	            <file role="php" name="Wordpress.php" />
+	            <dir name="Wordpress">
+	                <file role="php" name="Client.php" />
+	                <dir name="Model">
+	                    <file role="php" name="Abstract.php" />
+	                    <file role="php" name="ArrayAccessAbstract.php" />
+	                    <file role="php" name="ArrayStruct.php" />
+	                    <file role="php" name="Author.php" />
+	                    <file role="php" name="Authors.php" />
+	                    <file role="php" name="Categories.php" />
+	                    <file role="php" name="Category.php" />
+	                    <file role="php" name="Comment.php" />
+	                    <file role="php" name="Comments.php" />
+	                    <file role="php" name="CommentsFilter.php" />
+	                    <file role="php" name="Page.php" />
+	                    <file role="php" name="Pages.php" />
+	                    <file role="php" name="Post.php" />
+	                    <file role="php" name="Posts.php" />
+	                    <file role="php" name="Tag.php" />
+	                    <file role="php" name="Tags.php" />
+	                </dir>
+	            </dir>
             </dir>
         </dir>
     </contents>
