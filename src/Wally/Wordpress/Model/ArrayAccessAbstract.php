@@ -22,7 +22,7 @@ abstract class Wally_Wordpress_Model_ArrayAccessAbstract
 
     private $_orders = array(
         'Asc' => self::ASC,
-        'Asc' => self::ASC,
+        'Desc' => self::DESC,
         'Ascending' => self::ASC,
         'Descending' => self::DESC
     );
