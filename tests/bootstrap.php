@@ -1,10 +1,8 @@
 <?php 
 
-require_once "WordpressMockClient.php";
-
 set_include_path(implode(PATH_SEPARATOR,  array(
     realpath(dirname(__FILE__) . '/../src'),
-realpath(dirname(__FILE__) . '/../vendor/zend'),
+    realpath(dirname(__FILE__) . '/../vendor/zend'),
     get_include_path(),
 )));
 
@@ -14,6 +12,8 @@ $autoloader = Zend_Loader_Autoloader::getInstance();
 
 $autoloader->registerNamespace("Wally_");
 $autoloader->registerNamespace("Zend_");
+
+require_once dirname(__FILE__) . "/WordpressMockClient.php";
 
 define("HOST", "http://localhost/");
 define("USERNAME", "");

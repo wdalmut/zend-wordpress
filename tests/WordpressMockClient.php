@@ -1,6 +1,6 @@
 <?php
 
-require_once ("Zend/Http/Client.php");
+require_once "Zend/Http/Client.php";
 
 /**
  * @todo remove this class completely! 
