@@ -1,7 +1,7 @@
 <phpunit backupGlobals="true"
 		bootstrap="bootstrap.php"
         backupStaticAttributes="false"
-        colors="false"
+        colors="true"
         convertErrorsToExceptions="true"
         convertNoticesToExceptions="true"
         convertWarningsToExceptions="true"

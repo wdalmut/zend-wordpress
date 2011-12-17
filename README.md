@@ -19,7 +19,6 @@ This library allows you to connect and perform operations on remote Wordpress in
  * Get comments from articles
  * Create, edit and moderate comments for articles (Comments CRUD)
  * Get users of all your blogs or any specific blog
- * PHPUnit tested - more than 70% of the code under test
  * PEAR Packages available http://pear.walterdalmut.com
  * Finder and Sorter methods available on all available fields.
 
