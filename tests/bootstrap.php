@@ -4,6 +4,7 @@ require_once "WordpressMockClient.php";
 
 set_include_path(implode(PATH_SEPARATOR,  array(
     realpath(dirname(__FILE__) . '/../src'),
+realpath(dirname(__FILE__) . '/../vendor/zend'),
     get_include_path(),
 )));
 
