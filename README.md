@@ -1,4 +1,4 @@
-# Zend Wordpress ![Project Status](http://stillmaintained.com/wdalmut/zend-wordpress.png)  [![Build Status](https://secure.travis-ci.org/wdalmut/zend-wordpress.png)](http://travis-ci.org/wdalmut/zend-wordpress?branch=master)
+# Zend Wordpress ![Project Status](http://stillmaintained.com/wdalmut/zend-wordpress.png)  -  [![Build Status](https://secure.travis-ci.org/wdalmut/zend-wordpress.png)](http://travis-ci.org/wdalmut/zend-wordpress?branch=master)
 
 ## Brief Description
 
