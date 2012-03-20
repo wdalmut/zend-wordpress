@@ -365,7 +365,7 @@ class Wally_Wordpress_Client
 				$t = new Zend_Filter();
 				$t->addFilter(new Zend_Filter_Word_SeparatorToCamelCase("_"));
 		
-				$r = Wally_Wordpress_Tool::lcfirst($t->filter($k));
+				$r = lcfirst($t->filter($k));
 				$s->$r = $w;
 			}
 		
